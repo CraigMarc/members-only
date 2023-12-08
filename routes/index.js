@@ -6,4 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('home', { title: 'Members Only' });
 });
 
+//get sign up form
+router.get('/sign-up', function(req, res, next) {
+  res.render('sign-up', { title: 'Members Only' });
+});
+
+
 module.exports = router;
