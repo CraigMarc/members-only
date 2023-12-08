@@ -8,8 +8,12 @@ router.get('/', function(req, res, next) {
 
 //get sign up form
 router.get('/sign-up', function(req, res, next) {
-  res.render('sign-up', { title: 'Members Only' });
+  res.render('sign-up', { title: 'Sign Up' });
 });
 
+//get log in form
+router.get('/log-in', function(req, res, next) {
+  res.render('log-in', { title: 'Log In' });
+});
 
 module.exports = router;
