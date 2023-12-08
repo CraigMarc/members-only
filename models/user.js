@@ -8,6 +8,8 @@ const UserSchema = new Schema({
   userName: { type: String, required: true, minLength: 4 },
   password: { type: String, required: true, minLength: 6 },
   member: { type: Boolean, required: true },
+  admin: { type: Boolean },
+  
 });
 
 // Virtual for item URL

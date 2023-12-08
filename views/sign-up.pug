@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+ 
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='firstName') First Name:
+      input#firstName.form-control(type='text', placeholder='First Name' name='firstName' required='true' value=(undefined===sign_up ? '' : sign_up.firstName) )
+    div.form-group
+      label(for='lastName') Last Name:
+      textarea#lastName.form-control(type='textarea', placeholder='Last Name' name='lastName' required='true') #{undefined===sign_up ? '' : sign_up.lastName}
+    div.form-group
+      label(for='userName') UserName:
+      input#userName.form-control(type='text', placeholder='User Name' name='userName' value=(undefined===sign_up ? '' : sign_up.userName) required='true')
+    div.form-group
+      label(for='password') Password:
+      input#password.form-control(type='text', placeholder='Password' name='password' value=(undefined===sign_up ? '' : sign_up.password) required='true')
+    div.form-group
+      label(for='confirm') Confirm Password:
+      input#confirm.form-control(type='text', placeholder='Confirm Password' name='confirm' value=(undefined===sign_up ? '' : sign_up.confirm) required='true')
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
