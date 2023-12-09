@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const messageRouter = require("./routes/message"); 
+const messageRouter = require("./routes/message");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const dotenv = require('dotenv');
@@ -16,14 +16,16 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 var app = express();
+const bcrypt = require('bcryptjs')
 
-const mongoDB = process.env.MONGODB_URI 
+const mongoDB = process.env.MONGODB_URI
 
 main().catch((err) => console.log(err));
 async function main() {
-await mongoose.connect(mongoDB);
+  await mongoose.connect(mongoDB);
 }
 
+/*
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -36,6 +38,31 @@ passport.use(
       };
       return done(null, user);
     } catch(err) {
+      return done(err);
+    };
+  })
+);
+*/
+
+/*
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      console.log('hello')
+      const user = await User.findOne({ userName: username });
+      if (!user) {
+        console.log('no user')
+        return done(null, false, { message: "Incorrect username" });
+        
+      };
+      const match = await bcrypt.compare(password, user.password);
+      console.log(match)
+      if (!match) {
+        // passwords do not match!
+        return done(null, false, { message: "Incorrect password" })
+      }
+      return done(null, user);
+    } catch (err) {
       return done(err);
     };
   })
@@ -58,7 +85,7 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
-
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -74,12 +101,12 @@ app.use('/users', usersRouter);
 app.use("/message", messageRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -88,5 +115,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
