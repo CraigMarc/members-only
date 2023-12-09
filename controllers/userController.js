@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
-
+const bcrypt = require('bcryptjs')
 
 // Display User create form on GET.
 exports.user_create_get = asyncHandler(async (req, res, next) => {
@@ -43,11 +43,11 @@ exports.user_create_post = [
     .isLength({ min: 6 })
     .escape()
     .withMessage("Password must be at least 6 characters."),
-    body('confirm').custom((value, { req }) => {
-      return value === req.body.password;
-    })
+  body('confirm').custom((value, { req }) => {
+    return value === req.body.password;
+  })
     .withMessage("Passwords must match."),
-  
+
 
 
   // Process request after validation and sanitization.
@@ -55,14 +55,7 @@ exports.user_create_post = [
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a category object with escaped and trimmed data.
-    const user = new User({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      userName: req.body.userName,
-      password: req.body.password,
 
-    });
 
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values/error messages.
@@ -84,7 +77,22 @@ exports.user_create_post = [
           errors: errors.array(),
         });
       } else {
-        await user.save();
+        
+        bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
+          // if err, do something
+          if (err) {
+            return console.log('Cannot encrypt');
+          }
+          // otherwise, store hashedPassword in DB
+          const user = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            userName: req.body.userName,
+            password: hashedPassword
+          })
+          await user.save()
+        });
+
         // New category saved. Redirect to category detail page.
         res.render('home', { title: 'Members Only' });
       }
