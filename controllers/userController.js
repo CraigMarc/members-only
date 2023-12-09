@@ -9,10 +9,7 @@ exports.user_create_get = asyncHandler(async (req, res, next) => {
 });
 
 // Handle User create on POST.
-/*
-exports.user_create_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Author create POST");
-});*/
+
 
 exports.user_create_post = [
   // Validate and sanitize the name field.
