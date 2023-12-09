@@ -42,8 +42,12 @@ exports.user_create_post = [
     .trim()
     .isLength({ min: 6 })
     .escape()
-    .withMessage("must be at least 6 characters."),
-
+    .withMessage("Password must be at least 6 characters."),
+    body('confirm').custom((value, { req }) => {
+      return value === req.body.password;
+    })
+    .withMessage("Passwords must match."),
+  
 
 
   // Process request after validation and sanitization.
