@@ -6,3 +6,16 @@ block content
 
   <a href="/message/log-out">LOG OUT</a>
   <a href="/message/new-message">New Message</a>
+
+   h4 Messages
+  
+    dl
+      each allMessages in message
+        dt
+          p #{allMessages.title}
+          p #{allMessages.username}
+          p #{allMessages.timeStamp}
+        dd #{allMessages.text}
+
+      else
+        p There are no messages.

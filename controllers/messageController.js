@@ -4,21 +4,22 @@ const { body, validationResult } = require("express-validator");
 
 // home page
 exports.index = asyncHandler(async (req, res, next) => {
+
   let allMessages = await Message.find().exec()
-  console.log(allMessages[0].title)
-  res.render('home', { 
+
+  res.render('home', {
     title: 'Members Only',
     message: allMessages
-   });
+  });
 
 });
 
- // Display new message form on GET.
- exports.new_message_get = asyncHandler(async (req, res, next) => {
-  
+// Display new message form on GET.
+exports.new_message_get = asyncHandler(async (req, res, next) => {
+
   res.render("message-form", {
     title: "New Message",
-   
+
   });
 });
 
@@ -40,8 +41,8 @@ exports.new_message_post = [
     .isLength({ min: 1 })
     .escape()
     .withMessage("Message must be specified."),
-    
-  
+
+
 
   // Process request after validation and sanitization.
   asyncHandler(async (req, res, next) => {
@@ -56,16 +57,16 @@ exports.new_message_post = [
       text: req.body.text,
       timeStamp: currentDate,
       userName: req.user,
-      
+
     });
-  
-      if (!errors.isEmpty()) {
-        // There are errors. Render the form again with sanitized values/error messages.
-        res.render("message-form", {
-          title: "New Message",
-          errors: errors.array(),
-        });
-        return;
+
+    if (!errors.isEmpty()) {
+      // There are errors. Render the form again with sanitized values/error messages.
+      res.render("message-form", {
+        title: "New Message",
+        errors: errors.array(),
+      });
+      return;
 
     } else {
       // Data from form is valid. Save book.

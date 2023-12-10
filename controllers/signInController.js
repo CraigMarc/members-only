@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Message = require("../models/message");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const passport = require("passport");
@@ -6,15 +7,15 @@ const passport = require("passport");
 
 // Display User sign in form on GET.
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
-  
-    res.render('log-in', { 
-      title: 'Log In',
-      message: req.session.messages
-     });
-  });
 
-  // Display User sign in form on Post.
-  
+  res.render('log-in', {
+    title: 'Log In',
+    message: req.session.messages
+  });
+});
+
+// Display User sign in form on Post.
+
 exports.sign_in_post =
   passport.authenticate("local", {
     successRedirect: "/message/logged-in",
@@ -22,13 +23,16 @@ exports.sign_in_post =
     failureMessage: true
   })
 
-  // Display logged in page on GET.
+// Display logged in page on GET.
 exports.logged_in_home_get = asyncHandler(async (req, res, next) => {
-  
+
+  let allMessages = await Message.find().exec()
+
   res.render("logged-in", {
     title: "Members Only",
     user: req.user,
-    
+    message: allMessages
+
   });
 });
 
