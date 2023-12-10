@@ -22,8 +22,14 @@ router.post("/create", user_controller.user_create_post);
 router.get("/sign-in", signIn_controller.sign_in_get);
 
 // Post request for sign in. 
-//router.post("/sign-in", signIn_controller.sign_in_post);
 
 router.post("/sign-in", signIn_controller.sign_in_post);
+
+// GET request for signed in home page. 
+router.get("/logged-in", signIn_controller.logged_in_home_get);
+
+// Get request for log out
+
+router.get("/log-out", signIn_controller.log_out_get);
 
 module.exports = router;
