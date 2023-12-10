@@ -8,10 +8,18 @@ exports.index = asyncHandler(async (req, res, next) => {
 
  // Display new message form on GET.
  exports.new_message_get = asyncHandler(async (req, res, next) => {
-  console.log(req.user)
+  
   res.render("message-form", {
     title: "New Message",
    
     
   });
+});
+
+// new message form on post.
+exports.new_message_post = asyncHandler(async (req, res, next) => {
+  
+ res.send('not done')
+   
+  
 });

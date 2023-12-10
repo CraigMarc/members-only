@@ -36,5 +36,9 @@ router.get("/log-out", signIn_controller.log_out_get);
 
 router.get("/new-message", message_controller.new_message_get);
 
+// Post request for new message
+
+router.post("/new-message", message_controller.new_message_post);
+
 
 module.exports = router;

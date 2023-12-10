@@ -20,7 +20,7 @@ exports.sign_in_post =
 
   // Display logged in page on GET.
 exports.logged_in_home_get = asyncHandler(async (req, res, next) => {
-  console.log(req.user)
+  
   res.render("logged-in", {
     title: "Members Only",
     user: req.user,
