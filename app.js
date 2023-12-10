@@ -26,38 +26,19 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-/*
-passport.use(
-  new LocalStrategy(async (username, password, done) => {
-    try {
-      const user = await User.findOne({ username: username });
-      if (!user) {
-        return done(null, false, { message: "Incorrect username" });
-      };
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" });
-      };
-      return done(null, user);
-    } catch(err) {
-      return done(err);
-    };
-  })
-);
-*/
-
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      console.log('hello')
+      
       const user = await User.findOne({ userName: username });
       if (!user) {
-        console.log('no user')
+        
         return done(null, false, { message: "Incorrect username" });
         
       };
       const match = await bcrypt.compare(password, user.password);
-      console.log(match)
+      
       if (!match) {
         // passwords do not match!
         return done(null, false, { message: "Incorrect password" })
