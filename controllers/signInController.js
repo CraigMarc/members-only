@@ -6,16 +6,20 @@ const passport = require("passport");
 
 // Display User sign in form on GET.
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
-    res.render('log-in', { title: 'Log In' });
+  
+    res.render('log-in', { 
+      title: 'Log In',
+      message: req.session.messages
+     });
   });
 
   // Display User sign in form on Post.
   
-
 exports.sign_in_post =
   passport.authenticate("local", {
     successRedirect: "/message/logged-in",
-    failureRedirect: "/message/sign-in"
+    failureRedirect: "/message/sign-in",
+    failureMessage: true
   })
 
   // Display logged in page on GET.
