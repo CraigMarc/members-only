@@ -15,8 +15,9 @@ const User = require("./models/user");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-var app = express();
 const bcrypt = require('bcryptjs')
+
+var app = express();
 
 const mongoDB = process.env.MONGODB_URI
 
@@ -44,7 +45,7 @@ passport.use(
 );
 */
 
-/*
+
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -85,7 +86,7 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
-*/
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

@@ -7,7 +7,7 @@ block content
   form(method='POST' action='')
     div.form-group
       label(for='userName') UserName:
-      input#userName.form-control(type='text', placeholder='User Name' name='userName' value=(undefined===log_in ? '' : log_in.userName) required='true')
+      input#username.form-control(type='text', placeholder='User Name' name='username' value=(undefined===log_in ? '' : log_in.userName) required='true')
     div.form-group
       label(for='password') Password:
       input#password.form-control(type='text', placeholder='Password' name='password' value=(undefined===log_in ? '' : log_in.password) required='true')

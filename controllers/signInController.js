@@ -7,7 +7,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const session = require("express-session");
 var express = require('express');
 var app = express();
-
+/*
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -48,7 +48,7 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
-
+*/
 
 // Display User sign in form on GET.
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
