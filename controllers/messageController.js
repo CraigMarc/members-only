@@ -4,7 +4,13 @@ const { body, validationResult } = require("express-validator");
 
 // home page
 exports.index = asyncHandler(async (req, res, next) => {
-  res.render('home', { title: 'Members Only' });
+  let allMessages = await Message.find().exec()
+  console.log(allMessages[0].title)
+  res.render('home', { 
+    title: 'Members Only',
+    message: allMessages
+   });
+
 });
 
  // Display new message form on GET.
@@ -17,13 +23,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 // new message on post.
-/*
-exports.new_message_post = asyncHandler(async (req, res, next) => {
-  
- res.send('not done')
-   
-  
-});*/
+
 
 exports.new_message_post = [
   // Validate and sanitize the name field.
