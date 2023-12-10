@@ -15,5 +15,11 @@ MessageSchema.virtual("url").get(function () {
   return `/home/message/${this._id}`;
 });
 
+// Virtual for Date
+MessageSchema.virtual("formattedDate").get(function () {
+  // We don't use an arrow function as we'll need the this object
+  return this.timeStamp.toLocaleString();
+});
+
 // Export model
 module.exports = mongoose.model("Message", MessageSchema);

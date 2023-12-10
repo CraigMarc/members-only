@@ -26,7 +26,9 @@ exports.sign_in_post =
 // Display logged in page on GET.
 exports.logged_in_home_get = asyncHandler(async (req, res, next) => {
 
-  let allMessages = await Message.find().exec()
+  let allMessages = await Message.find()
+  .populate("userName")
+  .exec()
 
   res.render("logged-in", {
     title: "Members Only",
