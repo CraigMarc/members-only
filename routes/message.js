@@ -32,4 +32,9 @@ router.get("/logged-in", signIn_controller.logged_in_home_get);
 
 router.get("/log-out", signIn_controller.log_out_get);
 
+// Get request for new message
+
+router.get("/new-message", message_controller.new_message_get);
+
+
 module.exports = router;
