@@ -49,4 +49,8 @@ router.get("/admin-signup", user_controller.admin_sign_up_get);
 
 router.post("/admin-signup", user_controller.admin_sign_up_post);
 
+// post for logged in page to delete post
+
+router.post("/logged-in", signIn_controller.delete_message_post);
+
 module.exports = router;

@@ -49,5 +49,15 @@ exports.log_out_get = asyncHandler(async (req, res, next) => {
   });
 });
 
+// delete post with post req for logged-in
+
+exports.delete_message_post = asyncHandler(async (req, res, next) => {
+
+  await Message.findByIdAndDelete(req.body.messageid);
+    res.redirect("/message/logged-in");
+
+  
+});
+
 
 
