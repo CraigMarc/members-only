@@ -1,29 +1,34 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome back #{user.firstName}
-  p admin #{user.admin}
 
-  <a href="/message/log-out">LOG OUT</a>
-  <a href="/message/new-message">New Message</a>
+  div(class="buttonsCenter")
+    div(class="buttonContainer")
+      h1= title
+      div(class="buttonDiv")
+        <a href="/message/log-out">Log Out</a>
+      div(class="buttonDiv")
+        <a href="/message/new-message">New Message</a>
 
-   h4 Messages
-  
-    dl
-      each allMessages in message
-        dt
-          p #{allMessages.title}
+  h4 Welcome back #{user.firstName}
+
+  h2 Messages
+
+  dl
+    each allMessages in message
+      dt
+        div(class='messageContainer')
+          p(class='messageTitle') #{allMessages.title}
           p #{allMessages.text}
           p #{allMessages.userName.userName} 
           p #{allMessages.formattedDate}
 
-          if user.admin==true
-            form(method='POST' action='')
-              div.form-group
-                input#messageid.form-control(type='hidden',name='messageid', required='true', value=allMessages._id )
+        if user.admin==true
+          form(method='POST' action='')
+            div.form-group
+              input#messageid.form-control(type='hidden',name='messageid', required='true', value=allMessages._id )
 
-              button.btn.btn-primary(type='submit') Delete
+            button.btn.btn-primary(type='submit') Delete
 
-      else
-        p There are no messages.
+    else
+      p There are no messages.

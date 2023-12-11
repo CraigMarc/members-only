@@ -39,3 +39,28 @@ a {
   border-bottom: solid;
   border-width: 0.1px;
 }
+
+button {
+  border-radius: 20px;
+  background-color: lightgrey;
+  font-size: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.formContainer {
+  padding-bottom: 10px;
+}
+
+form {
+  font-size: 18px;
+}
+
+form > div {
+padding-bottom: 5px;
+
+}
+
+input {
+  border-radius: 5px;
+}
