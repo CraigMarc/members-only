@@ -3,6 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome back #{user.firstName}
+  p admin #{user.admin}
 
   <a href="/message/log-out">LOG OUT</a>
   <a href="/message/new-message">New Message</a>
@@ -16,6 +17,13 @@ block content
           p #{allMessages.text}
           p #{allMessages.userName.userName} 
           p #{allMessages.formattedDate}
+
+          if user.admin==true
+            form(method='POST' action='')
+              div.form-group
+                input#messageid.form-control(type='hidden',name='messageid', required='true', value=allMessages._id )
+
+              button.btn.btn-primary(type='submit') Delete
 
       else
         p There are no messages.
