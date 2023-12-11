@@ -1,19 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  <a href="/message/sign-in">Log In</a>
-  <a href="/message/create">Sign Up</a>
+  
+  div(class="buttonsCenter")
+    div(class="buttonContainer")
+      h1= title
+      div(class="buttonDiv")
+        <a href="/message/sign-in">Log In</a>
+      div(class="buttonDiv")
+        <a href="/message/create">Sign Up</a>
 
-   h4 Messages
+  h2 Messages
   
 
-    dl
-      each allMessages in message
-        dt
-          p #{allMessages.title}
-        dd #{allMessages.text}
+  dl
+    each allMessages in message
+      dt
+        div(class='messageContainer')
+          p(class="messageTitle") #{allMessages.title}
+          p #{allMessages.text}
 
-      else
-        p There are no messages.
+    else
+      p There are no messages.

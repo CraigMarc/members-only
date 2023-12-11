@@ -4,5 +4,38 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: black;
+  text-decoration: none;
+}
+
+.buttonDiv {
+  border: solid;
+  border-width: 0.1px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: lightgrey;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.buttonsCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.messageTitle {
+  font-weight: bold;
+}
+
+.messageContainer {
+  border-bottom: solid;
+  border-width: 0.1px;
 }
