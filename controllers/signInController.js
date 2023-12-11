@@ -49,13 +49,5 @@ exports.log_out_get = asyncHandler(async (req, res, next) => {
   });
 });
 
-// Display User admin in form on GET.
-exports.admin_sign_up_get = asyncHandler(async (req, res, next) => {
-
-  res.render('admin-signup', {
-    title: 'Admin Sign Up',
-    message: req.session.messages
-  });
-});
 
 

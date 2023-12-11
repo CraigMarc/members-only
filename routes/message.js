@@ -26,6 +26,7 @@ router.get("/sign-in", signIn_controller.sign_in_get);
 router.post("/sign-in", signIn_controller.sign_in_post);
 
 // GET request for signed in home page. 
+
 router.get("/logged-in", signIn_controller.logged_in_home_get);
 
 // Get request for log out
@@ -42,7 +43,10 @@ router.post("/new-message", message_controller.new_message_post);
 
 // get for admin sign up
 
-router.get("/admin-signin", signIn_controller.admin_sign_up_get);
+router.get("/admin-signup", user_controller.admin_sign_up_get);
 
+// Post request for admin sign in. 
+
+router.post("/admin-signup", user_controller.admin_sign_up_post);
 
 module.exports = router;
