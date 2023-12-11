@@ -58,7 +58,7 @@ exports.user_create_post = [
       // There are errors. Render the form again with sanitized values/error messages.
       res.render("sign-up", {
         title: "Sign Up",
-        sign_up: user,
+        
         errors: errors.array(),
       });
       return;
@@ -156,7 +156,7 @@ exports.admin_sign_up_get = asyncHandler(async (req, res, next) => {
         // There are errors. Render the form again with sanitized values/error messages.
         res.render("sign-up", {
           title: "Sign Up",
-          sign_up: user,
+          
           errors: errors.array(),
         });
         return;
