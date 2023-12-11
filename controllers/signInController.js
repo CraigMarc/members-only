@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const Message = require("../models/message");
+const Message = require("../models/message-model");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const passport = require("passport");
@@ -46,6 +46,15 @@ exports.log_out_get = asyncHandler(async (req, res, next) => {
       return next(err);
     }
     res.redirect("/");
+  });
+});
+
+// Display User admin in form on GET.
+exports.admin_sign_up_get = asyncHandler(async (req, res, next) => {
+
+  res.render('admin-signup', {
+    title: 'Admin Sign Up',
+    message: req.session.messages
   });
 });
 

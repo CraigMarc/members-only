@@ -40,5 +40,9 @@ router.get("/new-message", message_controller.new_message_get);
 
 router.post("/new-message", message_controller.new_message_post);
 
+// get for admin sign up
+
+router.get("/admin-signin", signIn_controller.admin_sign_up_get);
+
 
 module.exports = router;
