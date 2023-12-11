@@ -33,9 +33,8 @@ exports.new_message_post = [
     .trim()
     .isLength({ min: 1 })
     .escape()
-    .withMessage("Title name must be specified.")
-    .isAlphanumeric()
-    .withMessage("Title name has non-alphanumeric characters."),
+    .withMessage("Title name must be specified."),
+    
   body("text")
     .trim()
     .isLength({ min: 1 })
