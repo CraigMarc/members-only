@@ -70,7 +70,6 @@ exports.user_create_post = [
         // UserName exists, redirect to its detail page.
         res.render("sign-up", {
           title: "User Name Already Exists",
-          sign_up: user,
           errors: errors.array(),
         });
       } else {
@@ -168,7 +167,6 @@ exports.admin_sign_up_get = asyncHandler(async (req, res, next) => {
           // UserName exists, redirect to its detail page.
           res.render("sign-up", {
             title: "User Name Already Exists",
-            sign_up: user,
             errors: errors.array(),
           });
         } else {
