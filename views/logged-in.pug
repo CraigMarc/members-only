@@ -10,7 +10,7 @@ block content
       div(class="buttonDiv")
         <a href="/message/new-message">New Message</a>
 
-  h4 Welcome back #{user.firstName}
+  h3 Welcome back #{user.firstName}
 
   h2 Messages
 
@@ -20,8 +20,8 @@ block content
         div(class='messageContainer')
           p(class='messageTitle') #{allMessages.title}
           p #{allMessages.text}
-          p #{allMessages.userName.userName} 
-          p #{allMessages.formattedDate}
+          p #{allMessages.userName.userName} #{allMessages.formattedDate}
+          
 
         if user.admin==true
           form(method='POST' action='')

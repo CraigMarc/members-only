@@ -70,3 +70,7 @@ textarea {
   height: 100px;
   width: 200px;
 }
+
+.textareaCenter {
+  display: flex;
+}
