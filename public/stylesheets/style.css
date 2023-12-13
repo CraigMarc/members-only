@@ -20,6 +20,10 @@ a {
   justify-content: center;
 }
 
+h1 {
+  padding-right: 30px;
+}
+
 .messageTitle {
   font-weight: bold;
 }
