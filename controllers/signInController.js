@@ -31,7 +31,7 @@ exports.logged_in_home_get = asyncHandler(async (req, res, next) => {
   .exec()
 
   res.render("logged-in", {
-    title: "Members Only",
+    title: "Message Board",
     user: req.user,
     message: allMessages
 

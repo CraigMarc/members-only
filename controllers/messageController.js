@@ -8,7 +8,7 @@ exports.index = asyncHandler(async (req, res, next) => {
   let allMessages = await Message.find().exec()
 
   res.render('home', {
-    title: 'Members Only',
+    title: 'Message Board',
     message: allMessages
   });
 
